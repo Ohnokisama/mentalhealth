@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --main-bg: #0e1d30;
+  --light-bg: #1a314d;
+}
+
+* {
+  font-family: 'Manrope';
+}
+
+body {
+  background: var(--main-bg);
+}
+
+::-webkit-scrollbar {
+  width: 12px; /* Width of the scrollbar */
+  height: 12px; /* Height of the scrollbar */
+}
+
+/* Style the scrollbar track */
+::-webkit-scrollbar-track {
+  background: #777; /* Light gray background */
+}
+
+/* Style the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: #0e1d30; /* Darker gray thumb */
+  border-radius: 10px; /* Rounded corners */
+}
+
+/* Hover effect for the thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Darker shade on hover */
+}
