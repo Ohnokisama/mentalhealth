@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Avatar from "./../assets/avatar1.jpg";
 import { Link } from 'react-router-dom';
 
@@ -23,13 +23,20 @@ const ChatRoom = () => {
   // ]
   const [typing, setTyping] = useState(false)
   const [messages, setMessages] = useState([])
+  const [message, setMessage] = useState('')
 
-  const handleSend = async (message) => {
+  const inputRef = useRef(null)
+
+  const handleSend = async (e) => {
+    e.preventDefault()
+
     const newMessage = {
       message: message, 
-      sender: "user",
+      sender: "You",
       direction: "outgoing"
     }
+
+    inputRef.current.value = ''
 
     // Update messages
     const newMessages = [...messages, newMessage]
@@ -119,10 +126,12 @@ const ChatRoom = () => {
               ))
             }
           </div>
-          <form className='flex gap-2 absolute w-[90%] left-[5%] bottom-[20px]'>
+          <form className='flex gap-2 absolute w-[90%] left-[5%] bottom-[20px]' onSubmit={handleSend}>
             <input 
               type="text" className='bg-[#1a314d] w-full py-4 px-4 rounded-full' 
               placeholder='What do you want to know?'
+              onChange={e => setMessage(e.target.value)}
+              ref={inputRef}
             />
             <button className='py-4 px-5 rounded-full bg-white text-[#0e1d30] font-semibold'>
               <i className="ri-send-plane-line"></i>
