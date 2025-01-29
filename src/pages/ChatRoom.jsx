@@ -24,11 +24,13 @@ const ChatRoom = () => {
   const [typing, setTyping] = useState(false)
   const [messages, setMessages] = useState([])
   const [message, setMessage] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const inputRef = useRef(null)
 
   const handleSend = async (e) => {
     e.preventDefault()
+    setLoading(true)
 
     const newMessage = {
       message: message, 
@@ -41,9 +43,6 @@ const ChatRoom = () => {
     // Update messages
     const newMessages = [...messages, newMessage]
     setMessages(newMessages)
-
-    // Typing indicator
-    setTyping(true)
 
     // Send message to ChatGPT
     await sendMessageToChatGPT(newMessages)
@@ -90,7 +89,7 @@ const ChatRoom = () => {
           sender: "ChatGPT"
         }
       ])
-      setTyping(false)
+      setLoading(false)
     })
   }
 
@@ -124,6 +123,11 @@ const ChatRoom = () => {
                   <pre className='font-[Manrope] text-wrap block'>{message.message}</pre>
                 </div>
               ))
+            }
+            {
+              loading ? <div className="absolute bg-[#0e1d30] inline bottom-5 left-5 text-white py-1 px-3 rounded-full animate-pulse">
+              Frederick is typing.....
+            </div> : null
             }
           </div>
           <form className='flex gap-2 absolute w-[90%] left-[5%] bottom-[20px]' onSubmit={handleSend}>
