@@ -105,7 +105,7 @@ const ChatRoom = () => {
           </div>
         </div>
 
-        <Link className='hidden md:inline-block py-4 px-16 bg-red-500 text-white text-center rounded-full w-full' to={'/'}>
+        <Link className='md:inline-block flex items-center justify-center md:py-4 md:px-16 px-6 bg-red-500 text-white text-center rounded-full md:w-full' to={'/'}>
           Logout
         </Link>
       </nav>
