@@ -55,7 +55,7 @@ const ChatRoom = () => {
       if(messageObject.sender === "ChatGPT") {
         role = "assistant"
       } else {
-        role = "sender"
+        role = "user"
       }
       return { role: role, content: messageObject.message }
     })
@@ -120,8 +120,8 @@ const ChatRoom = () => {
                   <p>{message.message}</p>
                 </div> : 
                 <div key={i} className='py-3 px-6 bg-[#0e1d30] flex flex-col rounded-xl my-2 w-fit md:max-w-[70%] max-w-[90%]'>
-                  <span className='font-semibold'>{message.sender}</span>
-                  <p>{message.message}</p>
+                  <span className='font-semibold'>Frederick</span>
+                  <pre className='font-[Manrope] text-wrap block'>{message.message}</pre>
                 </div>
               ))
             }
