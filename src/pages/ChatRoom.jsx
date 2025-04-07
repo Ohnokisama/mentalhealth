@@ -61,7 +61,7 @@ const ChatRoom = () => {
 
     const systemMessage = {
       role: "system",
-      content: "Explain like a certified mental health professional and be clear about everything relating to mental health"
+      content: "Explain like a certified mental health professional and be clear about everything relating to mental health, only answering questions regarding mental health"
     }
 
     const apiRequestBody = {
